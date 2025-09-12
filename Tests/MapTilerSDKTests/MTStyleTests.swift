@@ -46,6 +46,11 @@ struct MTStyleTests {
         #expect(layer.visibility == decodedLayer.visibility)
     }
 
+    @Test func isGlobeProjectionEnabledCommand_shouldMatchJS() async throws {
+        let expectedJS = "\(MTBridge.mapObject).isGlobeProjection();"
+        #expect(IsGlobeProjectionEnabled().toJS() == expectedJS)
+    }
+
     @Test func mtMapReferenceStyle_containsDefaultVariant() async throws {
         for style in MTMapReferenceStyle.all() {
             #expect(style.getVariants()?.contains(.defaultVariant) ?? false)
